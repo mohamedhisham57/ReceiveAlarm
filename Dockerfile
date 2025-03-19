@@ -6,7 +6,7 @@ WORKDIR /app
 
 # Copy necessary files into the container
 COPY requirements.txt .
-COPY run.sh .
+COPY run.sh /app/run.sh
 COPY main.py .
 
 # Install dependencies
