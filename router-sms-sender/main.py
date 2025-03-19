@@ -18,27 +18,17 @@ broker_address = os.getenv("BROKER_ADDRESS", "192.168.1.102")
 
 
 
-def append_cold_list():
-    cold_file = open("C:/Users/Skarpt/Desktop/SMSGT/New/flask/cold_sensor_id.txt", "r")
-    new_list = []
-    for sensor in cold_file:
-        sensor = sensor.replace("\n", "")
-        new_list.append(sensor)
-    cold_file.close()
-    return new_list
+import os
+import json
 
+# Read options from Home Assistant's config.yaml
+config_path = "/data/options.json"  # Home Assistant stores options here
+with open(config_path, "r") as config_file:
+    options = json.load(config_file)
 
-def append_normal_list():
-    normal_file = open("C:/Users/Skarpt/Desktop/SMSGT/New/flask/normal_sensor_id.txt", "r")
-    new_list = []
-    for sensor in normal_file:
-        sensor = sensor.replace("\n", "")
-        new_list.append(sensor)
-    normal_file.close()
-    return new_list
-
-list_of_cold_room_sensors = append_cold_list()
-list_of_normal_room_sensors = append_normal_list()
+# Get sensor IDs from config.yaml
+list_of_cold_room_sensors = options.get("cold_room_sensors", [])
+list_of_normal_room_sensors = options.get("normal_room_sensors", [])
 
 
 
