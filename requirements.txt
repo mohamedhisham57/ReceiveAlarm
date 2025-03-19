@@ -1,0 +1,4 @@
+asyncore
+selenium
+paho-mqtt
+sqlite3
