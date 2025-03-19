@@ -14,5 +14,14 @@ ports:
   5060/tcp: 5060
 options:
   broker_address: "192.168.1.102"
+  cold_room_sensors:
+    - "sensor_1"
+    - "sensor_2"
+    - "sensor_3"
+  normal_room_sensors:
+    - "sensor_4"
+    - "sensor_5"
 schema:
   broker_address: "str"
+  cold_room_sensors: "list(str)"
+  normal_room_sensors: "list(str)"
