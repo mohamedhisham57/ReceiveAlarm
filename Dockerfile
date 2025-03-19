@@ -7,7 +7,7 @@ WORKDIR /app
 # Copy necessary files into the container
 COPY requirements.txt .
 COPY run.sh /app/run.sh
-COPY sensor_alarm_handler/main.py /app/main.py
+COPY router-sms-sender/main.py /app/main.py
 
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
