@@ -1,30 +1,25 @@
-# Use an official Python image
-FROM python:3.11-slim
+ARG BUILD_FROM
+FROM $BUILD_FROM
+ENV LANG C.UTF-8
+# Copy data for add-on
+COPY run.sh /
+RUN chmod a+x /run.sh
 
-# Set working directory inside the container
-WORKDIR /app
+CMD [ "/run.sh" ]
+
+FROM python:3.9
 
 
-# Install system dependencies (if needed)
-RUN apt-get update && apt-get install -y \
-    libpq-dev gcc g++ make \
-    && rm -rf /var/lib/apt/lists/*
-    
-# Copy necessary files into the container
-COPY requirements.txt /app/requirements.txt
-RUN ls -l /app/requirements.txt  # Debugging step
-RUN cat /app/requirements.txt    # Debugging step
-# Install Python dependencies
-RUN pip install --no-cache-dir -r /app/requirements.txt
 
-COPY run.sh /app/run.sh
-COPY router-sms-sender/main.py /app/main.py
+COPY config /config
 
-# Install dependencies
-RUN pip install --no-cache-dir -r /app/requirements.txt
+ADD main.py .
 
-# Make the run.sh script executable
-RUN chmod +x /app/run.sh
 
-# Set entrypoint
-CMD ["/app/run.sh"]
+RUN pip install paho-mqtt 
+RUN pip install influxdb
+RUN pip install PyCRC-Hex
+RUN pip install aiohttp
+
+CMD ["python3" , "./main.py"]
+
