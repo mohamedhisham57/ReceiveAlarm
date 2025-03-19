@@ -1,0 +1,18 @@
+name: "Sensor Alarm Handler"
+description: "Handles sensor alarms, stores data in the database, and sends notifications."
+version: "1.0.0"
+slug: "sensor_alarm_handler"
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+  - i386
+startup: application
+boot: auto
+ports:
+  5060/tcp: 5060
+options:
+  broker_address: "192.168.1.102"
+schema:
+  broker_address: "str"
