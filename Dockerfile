@@ -8,6 +8,7 @@ WORKDIR /app
 COPY requirements.txt .
 COPY run.sh /app/run.sh
 COPY main.py .
+COPY sensor_alarm_handler/main.py /app/main.py
 
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
