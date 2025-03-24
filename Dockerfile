@@ -1,25 +1,18 @@
-ARG BUILD_FROM
-FROM $BUILD_FROM
+# Base image for Home Assistant add-ons with Python
+FROM ghcr.io/home-assistant/amd64-base-python:3.11
+
+# Set environment variables
 ENV LANG C.UTF-8
-# Copy data for add-on
-COPY run.sh /
-RUN chmod a+x /run.sh
 
-CMD [ "/run.sh" ]
+# Create working directory
+WORKDIR /app
 
-FROM python:3.9
+# Copy local files into container
+COPY run.py run.py
+COPY requirements.txt requirements.txt
 
+# Install Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
-
-COPY config /config
-
-ADD main.py .
-
-
-RUN pip install paho-mqtt 
-RUN pip install influxdb
-RUN pip install PyCRC-Hex
-RUN pip install aiohttp
-
-CMD ["python3" , "./main.py"]
-
+# Entrypoint
+CMD ["python3", "/app/run.py"]
