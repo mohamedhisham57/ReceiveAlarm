@@ -15,4 +15,4 @@ COPY requirements.txt requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Entrypoint
-CMD ["python3", "/app/run.py"]
+CMD ["python3", "/app/main.py"]
