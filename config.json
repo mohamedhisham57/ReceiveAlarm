@@ -1,7 +1,7 @@
 {
-  "name": "Alarm Handler",
+  "name": "AlarmHandler",
   "version": "1.0",
-  "slug": "alarm_handler",
+  "slug": "AlarmHandler",
   "description": "Handles alarms and sends SMS via HTTP and MQTT",
   "startup": "application",
   "boot": "auto",
