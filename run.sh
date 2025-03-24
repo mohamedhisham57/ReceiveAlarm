@@ -1,3 +1,2 @@
-#!/bin/bash
-echo "Starting Sensor Alarm Handler..."
-python3 /app/main.py
+#!/usr/bin/with-contenv bashio
+echo Hello world!
