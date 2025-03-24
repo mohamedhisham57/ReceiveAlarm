@@ -1,5 +1,3 @@
-{
-  "name": "ReceiveAlarm Add-ons",
-  "url": "https://github.com/mohamedhisham57/ReceiveAlarm.git",
-  "maintainer": "skarpt Team <tech@skarpt.net>>"
-}
+name: lascarlocaladdon
+url: https://github.com/mohamedhisham57/ReceiveAlarm.git
+maintainer: skarpt Team <tech@skarpt.net>
